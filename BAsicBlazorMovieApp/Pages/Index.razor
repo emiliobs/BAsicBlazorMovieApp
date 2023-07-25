@@ -1,4 +1,6 @@
 ﻿@page "/"
+@* @attribute [StreamRendering(true)] *@
+@attribute [RenderModeServer]
 @inject IMovieReviewService _iMovieReviewService
 
 <PageTitle>Index</PageTitle>
@@ -18,17 +20,7 @@ else
         <div class="row">
             @foreach (var movie in moviGroup)
             {
-                <div class="col-md-3 mb-2">
-                    <a href="/MovieReview/@movie?.Id">
-                    <img class="img-thumbnail" src="@movie?.ImageUrl">
-                    <div class="card-body">
-                        <h5>@movie?.Title</h5>
-                        <p class="card-text">
-                            <b>@movie?.Description</b>
-                        </p>
-                    </div>
-                   </a>
-                </div>
+              <MovieItem Movie="movie"></MovieItem>
             }
         </div>
     }
@@ -38,11 +30,14 @@ else
 {
     List<MovieModel>? Movies = null;
 
-    protected override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
+
+        await Task.Delay(2000);
+
         Movies = _iMovieReviewService.GetMovies();
 
-        return base.OnInitializedAsync();
+       
     }
 
 }
