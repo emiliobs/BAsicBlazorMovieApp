@@ -1,9 +1,12 @@
 using BAsicBlazorMovieApp;
+using BAsicBlazorMovieApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents();
+
+builder.Services.AddScoped<IMovieReviewService, MovieReviewService>();
 
 var app = builder.Build();
 
