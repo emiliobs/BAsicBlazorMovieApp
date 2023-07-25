@@ -10,6 +10,7 @@
 
         public string ImagenUrl { get; set; } = null!;
 
-        public string Review { get; } = null!;
+        public string Review { get; set; } = null!;
+        public string ImageUrl { get; internal set; }
     }
 }
