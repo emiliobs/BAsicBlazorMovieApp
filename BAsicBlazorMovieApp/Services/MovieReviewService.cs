@@ -50,6 +50,7 @@ namespace BAsicBlazorMovieApp.Services
                 Review = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. Cras sed ex augue. Etiam rutrum massa at enim sollicitudin scelerisque. Pellentesque dignissim, velit vitae lacinia"
             }
         };
+
         public MovieModel? GetMovieById(int id) => movies.SingleOrDefault(m => m.Id == id);
 
         public List<MovieModel>? GetMovies() => movies.ToList();
