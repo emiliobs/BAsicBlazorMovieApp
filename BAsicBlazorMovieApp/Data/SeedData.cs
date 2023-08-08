@@ -1,63 +1,70 @@
 ﻿using BAsicBlazorMovieApp.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace BAsicBlazorMovieApp.Services
+namespace BAsicBlazorMovieApp.Data
 {
-    public class MovieReviewService : IMovieReviewService
+    public static class SeedData
     {
-
-        private static List<MovieModel> movies = new List<MovieModel>()
+        public static void AddMovies(ModelBuilder modelBuilder)
         {
-           new MovieModel{
-                Id=1,
+            modelBuilder.Entity<MovieModel>().HasData(new MovieModel
+            {
+                Id = 1,
                 Title = "Highlander",
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. ",
                 ImageUrl = "/images/movies/Highlander.png",
                 Review = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. Cras sed ex augue. Etiam rutrum massa at enim sollicitudin scelerisque. Pellentesque dignissim, velit vitae lacinia"
-            },
-             new MovieModel{
-                Id=2,
+            });
+
+            modelBuilder.Entity<MovieModel>().HasData(new MovieModel
+            {
+                Id = 2,
                 Title = "Godfather",
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. ",
                 ImageUrl = "/images/movies/Godfather.png",
                 Review = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. Cras sed ex augue. Etiam rutrum massa at enim sollicitudin scelerisque. Pellentesque dignissim, velit vitae lacinia"
-           
-             },
-            new MovieModel{
-                Id=3,
+
+            });
+
+            modelBuilder.Entity<MovieModel>().HasData(new MovieModel
+            {
+                Id = 3,
                 Title = "Last of the Mohicans",
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. ",
                 ImageUrl = "/images/movies/LastOfTheMohicans.png",
                 Review = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. Cras sed ex augue. Etiam rutrum massa at enim sollicitudin scelerisque. Pellentesque dignissim, velit vitae lacinia"
-            
-            },
-            new MovieModel{
-                Id=4,
+
+            });
+
+            modelBuilder.Entity<MovieModel>().HasData(new MovieModel
+            {
+                Id = 4,
                 Title = "Rear Window",
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. ",
                 ImageUrl = "/images/movies/RearWindow.png",
                 Review = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. Cras sed ex augue. Etiam rutrum massa at enim sollicitudin scelerisque. Pellentesque dignissim, velit vitae lacinia"
-            
-            },
-            new MovieModel{
-                Id=5,
+
+            });
+
+            modelBuilder.Entity<MovieModel>().HasData(new MovieModel
+            {
+                Id = 5,
                 Title = "Road House",
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. ",
                 ImageUrl = "/images/movies/RoadHouse.png",
                 Review = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. Cras sed ex augue. Etiam rutrum massa at enim sollicitudin scelerisque. Pellentesque dignissim, velit vitae lacinia"
-           
-            },
-            new MovieModel{
-                Id=6,
+
+            });
+
+            modelBuilder.Entity<MovieModel>().HasData(new MovieModel
+            {
+                Id = 6,
                 Title = "Star Treck IV",
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. ",
                 ImageUrl = "/images/movies/StarTreck4.png",
                 Review = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. Cras sed ex augue. Etiam rutrum massa at enim sollicitudin scelerisque. Pellentesque dignissim, velit vitae lacinia"
-           
-            }
-        };
 
-        public MovieModel? GetMovieById(int id) => movies.SingleOrDefault(m => m.Id == id);
-
-        public List<MovieModel>? GetMovies() => movies.ToList();
+            });
+        }
     }
 }

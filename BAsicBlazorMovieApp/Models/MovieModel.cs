@@ -1,7 +1,10 @@
-﻿namespace BAsicBlazorMovieApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BAsicBlazorMovieApp.Models
 {
     public class MovieModel
     {
+        [Key]
         public int Id { get; set; }
 
         public string Title { get; set; } = null!;
