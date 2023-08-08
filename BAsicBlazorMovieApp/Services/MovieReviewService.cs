@@ -1,63 +1,19 @@
-﻿using BAsicBlazorMovieApp.Models;
+﻿using BAsicBlazorMovieApp.Data;
+using BAsicBlazorMovieApp.Models;
 
 namespace BAsicBlazorMovieApp.Services
 {
     public class MovieReviewService : IMovieReviewService
     {
+        private readonly MovieReviewDBContext _context;
 
-        private static List<MovieModel> movies = new List<MovieModel>()
+        public MovieReviewService(MovieReviewDBContext context)
         {
-           new MovieModel{
-                Id=1,
-                Title = "Highlander",
-                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. ",
-                ImageUrl = "/images/movies/Highlander.png",
-                Review = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. Cras sed ex augue. Etiam rutrum massa at enim sollicitudin scelerisque. Pellentesque dignissim, velit vitae lacinia"
-            },
-             new MovieModel{
-                Id=2,
-                Title = "Godfather",
-                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. ",
-                ImageUrl = "/images/movies/Godfather.png",
-                Review = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. Cras sed ex augue. Etiam rutrum massa at enim sollicitudin scelerisque. Pellentesque dignissim, velit vitae lacinia"
-           
-             },
-            new MovieModel{
-                Id=3,
-                Title = "Last of the Mohicans",
-                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. ",
-                ImageUrl = "/images/movies/LastOfTheMohicans.png",
-                Review = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. Cras sed ex augue. Etiam rutrum massa at enim sollicitudin scelerisque. Pellentesque dignissim, velit vitae lacinia"
-            
-            },
-            new MovieModel{
-                Id=4,
-                Title = "Rear Window",
-                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. ",
-                ImageUrl = "/images/movies/RearWindow.png",
-                Review = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. Cras sed ex augue. Etiam rutrum massa at enim sollicitudin scelerisque. Pellentesque dignissim, velit vitae lacinia"
-            
-            },
-            new MovieModel{
-                Id=5,
-                Title = "Road House",
-                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. ",
-                ImageUrl = "/images/movies/RoadHouse.png",
-                Review = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. Cras sed ex augue. Etiam rutrum massa at enim sollicitudin scelerisque. Pellentesque dignissim, velit vitae lacinia"
-           
-            },
-            new MovieModel{
-                Id=6,
-                Title = "Star Treck IV",
-                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. ",
-                ImageUrl = "/images/movies/StarTreck4.png",
-                Review = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nunc risus. Cras sed ex augue. Etiam rutrum massa at enim sollicitudin scelerisque. Pellentesque dignissim, velit vitae lacinia"
-           
-            }
-        };
+            this._context = context;
+        }
 
-        public MovieModel? GetMovieById(int id) => movies.SingleOrDefault(m => m.Id == id);
+        public MovieModel? GetMovieById(int id) => _context.MovieModels.SingleOrDefault(m => m.Id == id);
 
-        public List<MovieModel>? GetMovies() => movies.ToList();
+        public List<MovieModel>? GetMovies() => _context.MovieModels.ToList();
     }
 }
