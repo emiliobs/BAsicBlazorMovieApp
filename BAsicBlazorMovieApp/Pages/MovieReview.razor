@@ -34,7 +34,7 @@ else
 
         if (!string.IsNullOrEmpty(Id))
         {
-            MovieItem = _iMovieReviewService.GetMovieById(Int32.Parse(Id));
+            MovieItem = await _iMovieReviewService.GetMovieById(Int32.Parse(Id));
             
         }
     }

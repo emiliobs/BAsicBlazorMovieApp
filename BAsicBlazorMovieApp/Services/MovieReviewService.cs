@@ -1,5 +1,6 @@
 ﻿using BAsicBlazorMovieApp.Data;
 using BAsicBlazorMovieApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BAsicBlazorMovieApp.Services
 {
@@ -12,8 +13,18 @@ namespace BAsicBlazorMovieApp.Services
             this._context = context;
         }
 
-        public MovieModel? GetMovieById(int id) => _context.MovieModels.SingleOrDefault(m => m.Id == id);
+        //public Task  MovieModel? GetMovieById(int id) => _context.MovieModels.SingleOrDefault(m => m.Id == id);
 
-        public List<MovieModel>? GetMovies() => _context.MovieModels.ToList();
+        //public List<MovieModel>? GetMovies() => _context.MovieModels.ToList();
+
+        public async  Task<List<MovieModel>> GetMovies()
+        {
+            return await _context.MovieModels.ToListAsync<MovieModel>();
+        }
+
+        public async Task<MovieModel?> GetMovieById(int id)
+        {
+            return await _context.MovieModels.SingleOrDefaultAsync(m => m.Id == id);
+        }
     }
 }

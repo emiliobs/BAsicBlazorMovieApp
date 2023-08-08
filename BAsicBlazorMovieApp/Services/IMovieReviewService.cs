@@ -4,8 +4,8 @@ namespace BAsicBlazorMovieApp.Services
 {
     public interface IMovieReviewService
     {
-        List<MovieModel>? GetMovies();
+        Task<List<MovieModel?>> GetMovies();
 
-        MovieModel? GetMovieById(int id);
+        Task<MovieModel?> GetMovieById(int id);
     }
 }
